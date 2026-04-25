@@ -2,12 +2,17 @@ package dev.java10x.CadastroDeNinjas.Missoes;
 
 import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-// Importante: As annotations leem o codigo até vc fechar os colchetes "{}" ou der ponto e virgula ";"
 @Entity // Tudo até o final do colchetes {} de MissoesModel é uma Entity
 @Table (name = "tb_missoes")
+@Data // Criando automaticamente todos os Getters e Setters
+@NoArgsConstructor // Criando automaticamente um construtor sem argumentos(vazio)
+@AllArgsConstructor // Criando automaticamente um construtor com todos os argumentos(id, nome, email, idade, missoes)
 public class MissoesModel {
 
     @Id
@@ -22,3 +27,8 @@ public class MissoesModel {
     @OneToMany(mappedBy = "missoes") // Mapear e conectar atravez de uma chave estrangeira esse relacionamento
     private List<NinjaModel> ninjas;
 }
+
+// IMPORTANTE!!
+// As annotations leem o codigo até vc fechar os colchetes "{}" ou der ponto e virgula ";"
+// Entity transforma uma classe em uma entidade do banco de dados
+// JPA = Java Persistence API
