@@ -19,6 +19,7 @@ public class NinjaModel {
 
     private String nome;
 
+    @Column(unique = true) // Usando @Column com unique = true faz com que não tenha itens repetidos nesse atributo da anotation(email)
     private String email;
 
     private int idade;
