@@ -15,23 +15,33 @@ public class NinjaModel {
 
     @Id // @Id informa que o atributo abaixo vai ser o id da classe(Long id;)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // @GeneratedValue para passar uma estrategia de como vai gerar o Id
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
 
-    @Column(unique = true) // Usando @Column com unique = true faz com que não tenha itens repetidos nesse atributo da anotation(email)
+    @Column(name = "email",unique = true)
     private String email;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
+    @Column(name = "idade")
     private int idade;
 
     // @ManyToOne - um ninja tem uma unica missão(ou seja, cada ninja só vai poder ter/participar/ser atribuida uma unica missão por vez)
     @ManyToOne
-    @JoinColumn(name = "missoes_id") // Juntar as duas colunas(missões e ninjas) criando uma terceira coluna
+    @JoinColumn(name = "missoes_id") // usando @JoinColumn vc junta as duas colunas(missões e ninjas) criando uma terceira coluna
     private MissoesModel missoes;
 
 }
 
 // IMPORTANTE!!
+// Sempre que vc fizer alguma atualização no codigo o ORM vai estar escaneando para atualizar no banco de dados
 // As annotations leem o codigo até vc fechar os colchetes "{}" ou der ponto e virgula ";"
 // Entity transforma uma classe em uma entidade do banco de dados
 // JPA = Java Persistence API
+// O nome de cada coluna é dada pelo nome do atributo(String nome vai ter a coluna chamada nome)
+// Mas da para mudar o nome de cada coluna/atributo usando @Column(name = "")
+// E @Column com unique = true faz com que não tenha itens repetidos no atributo da anotation(ex: email)
