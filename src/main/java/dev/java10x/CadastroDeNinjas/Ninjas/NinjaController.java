@@ -19,10 +19,11 @@ public class NinjaController {
         return "Essa é a minha primeira mensagem nessa rota";
     }
 
+
     // Adicionar Ninja (CREATE)
     @PostMapping("ninjas/criar")
-    public String criarNinja() {
-        return "Ninja criado";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninjaModel) {
+        return ninjaService.criarNinja(ninjaModel);
     }
 
     // Mostrar todos os Ninjas (READ)
