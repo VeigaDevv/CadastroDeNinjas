@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class MissoesModel {
 
     // @OneToMany - Uma missão pode ter varios ninjas(ou seja, cada missão vai poder ter/participar/ser atribuida varios ninjas de uma vez)
     @OneToMany(mappedBy = "missoes") // Mapear e conectar atravez de uma chave estrangeira esse relacionamento
+    @JsonIgnore // @JsonIgnore é usado para ignorar a serializaçõa e evitar o loop
     private List<NinjaModel> ninjas;
 }
 
