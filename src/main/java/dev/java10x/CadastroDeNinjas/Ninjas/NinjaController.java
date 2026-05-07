@@ -1,10 +1,18 @@
 package dev.java10x.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping
 public class NinjaController {
+
+    // Injetando a dependencia NinjaService na classe NinjaController
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     @GetMapping("/boasvindas") // Esse GetMapping vai pegar informações do meu metodo BoasVindas usando essa sintaxe
     public String boasVindas() {
@@ -19,8 +27,8 @@ public class NinjaController {
 
     // Mostrar todos os Ninjas (READ)
     @GetMapping("ninjas/listar")
-    public String mostrarTodosOsNinjas() {
-        return "Mostrar Ninja";
+    public List<NinjaModel> listarNinjas() {
+        return ninjaService.listarNinjas();
     }
 
     // Mostrar Ninja por ID (READ)
