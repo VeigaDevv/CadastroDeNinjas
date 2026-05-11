@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaService {
 
-    private NinjaRepository ninjaRepository; // Injetando a dependencia NinjaRepository(JPA extendido)
+    private final NinjaRepository ninjaRepository; // Injetando a dependencia NinjaRepository(JPA extendido)
     private NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
