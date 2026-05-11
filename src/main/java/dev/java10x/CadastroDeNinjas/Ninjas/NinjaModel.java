@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity // Tudo até o final do colchetes {} de NinjaModel é uma Entity
 @Table(name = "tb_cadastro")
 @Data // Criando automaticamente todos os Getters e Setters
 @NoArgsConstructor // Criando automaticamente um construtor sem argumentos(vazio)
 @AllArgsConstructor // Criando automaticamente um construtor com todos os argumentos(id, nome, email, idade, missoes)
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id // @Id informa que o atributo abaixo vai ser o id da classe(Long id;)
